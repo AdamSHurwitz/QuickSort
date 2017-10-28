@@ -9,17 +9,10 @@ object QuickSort {
      */
     fun quickSort(a: ArrayList<Int>, l: Int, r: Int): ArrayList<Int> {
 
-        //todo: return if l >= length or r <=0
-        /*if (r <= 0 || l >= a.size - 1) {
-            return a
-        }*/
-
         var p = a[l]
         var i = l + 1
         var j = l + 1
 
-        //println("r - l: " + r + " - " + l)
-        //todo: if r - l < 1, check swap
         if (r - i == 1 && a[r] < a[i]) {
             var temp = a[i]
             a[i] = a[r]
@@ -48,11 +41,12 @@ object QuickSort {
             quickSort(a, 0, i - 2)
         }
 
+        //todo: debug
         if (/*b*/ i >= r) {
         } else {
             //right side
             println("nextRight | B: " + i + " E: " + r)
-            //quickSort(a, i + 1, r)
+            quickSort(a, i, r)
         }
 
         return a

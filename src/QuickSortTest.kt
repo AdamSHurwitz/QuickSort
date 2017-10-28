@@ -7,22 +7,27 @@ object QuickSortTest {
     var thirdIterationTest = arrayListOf<Int>(2, 1, 3, 4)
 
     var weirdTest = arrayListOf<Int>(5, 6, 1, 3)
+    var weirdTest7 = arrayListOf<Int>(5, 6, 1, 3, 10, -7, 0)
+    var weirdTest10 = arrayListOf<Int>(5, 6, 1, -33, 10, -7, 0, 2, 3, -1)
     var weirdSecondIterationTest = arrayListOf<Int>(1, 4, 3)
 
     @JvmStatic
     fun main(args: Array<String>) {
-        test(smallTest)
-        /*test(secondIterationTest)
-        test(thirdIterationTest)*/
+        //test(smallTest)
+        //test(secondIterationTest)
+        //test(thirdIterationTest)
 
         //test(weirdTest)
+        //test(weirdSecondIterationTest)
+        //test(weirdTest7)
+        //test(weirdTest10)
 
         var veryBigArray = arrayListOf<Int>()
         val inputStream: InputStream = File("src/integerarray.txt").inputStream()
         val lineList = mutableListOf<String>()
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
         lineList.forEach { veryBigArray.add(it.toInt()) }
-        //test(veryBigArray.toTypedArray())
+        //test(veryBigArray)
     }
 
     //todo: base case length n is sorted
