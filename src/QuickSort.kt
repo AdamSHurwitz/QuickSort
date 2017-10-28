@@ -1,56 +1,61 @@
 //todo: QuickSort
-//1) Choose pivot element
-//2) Partition array around pivot - smaller elements to pivot moved to left, larger to right
-// • keep track of i (current partition position) and j (border of unlooked at elements)
-// • j++, if element < pivot, swap element with leftmost larger than pivot element i++
-// • if element > pivot, j++
-// • swap pivot into correct place in the array with right most value smaller than pivot
-//3) Call QuickSort on both sides <p, and >p
-
-// Psuedo Code
-//quickSort(array (A), left most index (l), right most index (r))
-//p = A[l]
-//i = l + 1
-//for j = l + 1 to r
-//if A[j] < p
-//swap A[j] and A[i]
-//i++
-//swap A[l] and A[i-1]
 
 object QuickSort {
-    var a: ArrayList<Int>
 
-    init {
-        a = arrayListOf<Int>()
-    }
+    /**
+     * p is pivot
+     * l is left most boundary used to calculate i (boundary of elements < and > than pivot) and j (newly seen elements)
+     * r is right most boundary
+     */
+    fun quickSort(a: ArrayList<Int>, l: Int, r: Int): ArrayList<Int> {
 
-    fun quickSort(a: List<Int>, p: Int) {
-        var i = p
-        var j = i + 1
-        if (a.size > 1) {
-            while (j < a.size) {
-                if (a[i] > a[j]) {
-                    var temp = a[i]
-                    this.a[i] = a[j]
-                    this.a[j] = temp
-                    i++
-                    j++
-                } else {
-                    j++
-                }
+        //todo: return if l >= length or r <=0
+        /*if (r <= 0 || l >= a.size - 1) {
+            return a
+        }*/
+
+        var p = a[l]
+        var i = l + 1
+        var j = l + 1
+
+        //println("r - l: " + r + " - " + l)
+        //todo: if r - l < 1, check swap
+        if (r - i == 1 && a[r] < a[i]) {
+            var temp = a[i]
+            a[i] = a[r]
+            a[r] = temp
+        }
+
+        for (j in j..r) {
+            if (a[j] < p) {
+                var temp = a[i]
+                a[i] = a[j]
+                a[j] = temp
+                i++
             }
         }
-        if(!a.isEmpty()){
-            quickSort(this.a.subList(0, a.size - 1), p)
-        }
-    }
 
-    fun initArray(a: ArrayList<Int>): ArrayList<Int> {
-        this.a = a
+        if (a[l] != a[i - 1]) {
+            var temp = a[l]
+            a[l] = a[i - 1]
+            a[i - 1] = temp
+        }
+
+        if (/*e*/ i - 2 <= 0) {
+        } else {
+            //left side
+            println("nextLeft | B: " + 0 + " E: " + (i - 2))
+            quickSort(a, 0, i - 2)
+        }
+
+        if (/*b*/ i >= r) {
+        } else {
+            //right side
+            println("nextRight | B: " + i + " E: " + r)
+            //quickSort(a, i + 1, r)
+        }
+
         return a
     }
 
-    fun pivotByFirstElement(): Int {
-        return 0
-    }
 }
