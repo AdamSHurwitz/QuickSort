@@ -13,12 +13,6 @@ object QuickSort {
         var i = l + 1
         var j = l + 1
 
-        if (r - i == 1 && a[r] < a[i]) {
-            var temp = a[i]
-            a[i] = a[r]
-            a[r] = temp
-        }
-
         for (j in j..r) {
             if (a[j] < p) {
                 var temp = a[i]
@@ -34,16 +28,14 @@ object QuickSort {
             a[i - 1] = temp
         }
 
-        if (/*e*/ i - 2 <= 0) {
-        } else {
-            //left side
+        //left side
+        if (i - 2 > 0) {
             println("nextLeft | B: " + 0 + " E: " + (i - 2))
             quickSort(a, 0, i - 2)
         }
 
-        if (/*b*/ i >= r) {
-        } else {
-            //right side
+        //right side
+        if (i < r) {
             println("nextRight | B: " + i + " E: " + r)
             quickSort(a, i, r)
         }
