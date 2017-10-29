@@ -66,15 +66,27 @@ object QuickSortTest {
         test(veryBigArray)
     }
 
-    //todo: base case length n is sorted
     fun test(arrayList: ArrayList<Int>) {
-        //todo: set partition p
-        //todo: recurse on everything lower than p and greater than p
-        var quickSort = QuickSort.quickSort(arrayList, 0, arrayList.size - 1)
-        for (i in quickSort) {
+        /*var quickSortFirst = QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1)
+        for (i in quickSortFirst.first) {
             println(i)
         }
         println()
+        print("Comparisons: " + quickSortFirst.second)*/
+
+        /*var quickSortLast = QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1)
+        for (i in quickSortLast.first) {
+            println(i)
+        }
+        println()
+        print("Comparisons: " + quickSortLast.second)*/
+
+        var quickSortMedian = QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1)
+        for (i in quickSortMedian.first) {
+            println(i)
+        }
+        println()
+        print("Comparisons: " + quickSortMedian.second)
     }
 
 }
