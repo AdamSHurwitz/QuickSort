@@ -41,7 +41,6 @@ object QuickSort {
             quickSort(a, 0, i - 2)
         }
 
-        //todo: debug
         if (/*b*/ i >= r) {
         } else {
             //right side

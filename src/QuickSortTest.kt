@@ -20,14 +20,43 @@ object QuickSortTest {
         //test(weirdTest)
         //test(weirdSecondIterationTest)
         //test(weirdTest7)
-        //test(weirdTest10)
+        test(weirdTest10)
 
-        var veryBigArray = arrayListOf<Int>()
+        /*var array10 = arrayListOf<Int>()
+        val inputStream: InputStream = File("src/integerarray10.txt").inputStream()
+        val lineList = mutableListOf<String>()
+        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
+        lineList.forEach { array10.add(it.toInt()) }
+        test(array10)*/
+
+        /*var array25 = arrayListOf<Int>()
+        val inputStream: InputStream = File("src/integerarray25.txt").inputStream()
+        val lineList = mutableListOf<String>()
+        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
+        lineList.forEach { array25.add(it.toInt()) }
+        test(array25)*/
+
+        //todo: figure out how to scale
+        /*var array50 = arrayListOf<Int>()
+        val inputStream: InputStream = File("src/integerarray50.txt").inputStream()
+        val lineList = mutableListOf<String>()
+        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
+        lineList.forEach { array50.add(it.toInt()) }
+        test(array50)*/
+
+        /*var array100 = arrayListOf<Int>()
+        val inputStream: InputStream = File("src/integerarray100.txt").inputStream()
+        val lineList = mutableListOf<String>()
+        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
+        lineList.forEach { array100.add(it.toInt()) }
+        test(array100)*/
+
+        /*var veryBigArray = arrayListOf<Int>()
         val inputStream: InputStream = File("src/integerarray.txt").inputStream()
         val lineList = mutableListOf<String>()
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
         lineList.forEach { veryBigArray.add(it.toInt()) }
-        //test(veryBigArray)
+        test(veryBigArray)*/
     }
 
     //todo: base case length n is sorted
