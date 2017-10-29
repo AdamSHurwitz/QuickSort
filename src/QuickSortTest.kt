@@ -20,7 +20,7 @@ object QuickSortTest {
         //test(weirdTest)
         //test(weirdSecondIterationTest)
         //test(weirdTest7)
-        test(weirdTest10)
+        //test(weirdTest10)
 
         /*var array10 = arrayListOf<Int>()
         val inputStream: InputStream = File("src/integerarray10.txt").inputStream()
@@ -58,12 +58,12 @@ object QuickSortTest {
         lineList.forEach { array100.add(it.toInt()) }
         test(array100)*/
 
-        /*var veryBigArray = arrayListOf<Int>()
+        var veryBigArray = arrayListOf<Int>()
         val inputStream: InputStream = File("src/integerarray.txt").inputStream()
         val lineList = mutableListOf<String>()
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
         lineList.forEach { veryBigArray.add(it.toInt()) }
-        test(veryBigArray)*/
+        test(veryBigArray)
     }
 
     //todo: base case length n is sorted

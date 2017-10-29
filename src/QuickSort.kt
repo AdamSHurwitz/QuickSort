@@ -1,5 +1,3 @@
-//todo: QuickSort
-
 object QuickSort {
 
     /**
@@ -28,19 +26,20 @@ object QuickSort {
             a[i - 1] = temp
         }
 
-        //left side
-        if (i - 2 > 0) {
-            println("nextLeft | B: " + 0 + " E: " + (i - 2))
-            quickSort(a, 0, i - 2)
+        if (l == r) {
+            return a
+        } else {
+            //left side
+            if (l >= 0 && i - 2 > 0) {
+                quickSort(a, l, i - 1)
+            }
+            //right side
+            if (r > 0 && i < r) {
+                quickSort(a, i, r)
+            }
+            return a
         }
 
-        //right side
-        if (i < r) {
-            println("nextRight | B: " + i + " E: " + r)
-            quickSort(a, i, r)
-        }
-
-        return a
     }
 
 }
