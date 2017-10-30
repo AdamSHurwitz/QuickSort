@@ -1,92 +1,46 @@
 import java.io.File
+import java.io.FileInputStream
 import java.io.InputStream
 
 object QuickSortTest {
-    var smallTest = arrayListOf<Int>(4, 3, 2, 1)
-    var secondIterationTest = arrayListOf<Int>(1, 3, 2, 4)
-    var thirdIterationTest = arrayListOf<Int>(2, 1, 3, 4)
-
-    var weirdTest = arrayListOf<Int>(5, 6, 1, 3, -1, 8)
-    var weirdTest7 = arrayListOf<Int>(5, 6, 1, 3, 10, -7, 0)
-    var weirdTest10 = arrayListOf<Int>(5, 6, 1, -33, 10, -7, 0, 2, 3, -1)
-    var weirdSecondIterationTest = arrayListOf<Int>(1, 4, 3)
 
     @JvmStatic
     fun main(args: Array<String>) {
-        //test(smallTest)
-        //test(secondIterationTest)
-        //test(thirdIterationTest)
+        //test(arrayListOf<Int>(1, 2, 3, 4))
+        //test(arrayListOf<Int>(4, 3, 2, 1))
+        //test(arrayListOf<Int>(1, 3, 2, 4))
+        //test(arrayListOf<Int>(5, 6, 1, 3, -1, 8))
+        //test(arrayListOf<Int>(1, 4, 3))
+        //test(arrayListOf<Int>(5, 6, 1, 3, 10, -7, 0))
+        //test(arrayListOf<Int>(5, 6, 1, -33, 10, -7, 0, 2, 3, -1))
+        //testFile(File("src/integerarray10.txt").inputStream())
+        //testFile(File("src/integerarray25.txt").inputStream())
+        //testFile(File("src/integerarray35.txt").inputStream())
+        //testFile(File("src/integerarray50.txt").inputStream())
+        //testFile(File("src/integerarray100.txt").inputStream())
+        testFile(File("src/integerarray.txt").inputStream())
+    }
 
-        //test(weirdTest)
-        //test(weirdSecondIterationTest)
-        //test(weirdTest7)
-        //test(weirdTest10)
-
-        /*var array10 = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray10.txt").inputStream()
+    private fun testFile(inputStream: FileInputStream) {
+        var arrayList = arrayListOf<Int>()
         val lineList = mutableListOf<String>()
         inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { array10.add(it.toInt()) }
-        test(array10)*/
-
-        /*var array25 = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray25.txt").inputStream()
-        val lineList = mutableListOf<String>()
-        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { array25.add(it.toInt()) }
-        test(array25)*/
-
-        /*var array35 = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray35.txt").inputStream()
-        val lineList = mutableListOf<String>()
-        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { array35.add(it.toInt()) }
-        test(array35)*/
-
-        //todo: figure out how to scale
-        /*var array50 = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray50.txt").inputStream()
-        val lineList = mutableListOf<String>()
-        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { array50.add(it.toInt()) }
-        test(array50)*/
-
-        /*var array100 = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray100.txt").inputStream()
-        val lineList = mutableListOf<String>()
-        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { array100.add(it.toInt()) }
-        test(array100)*/
-
-        var veryBigArray = arrayListOf<Int>()
-        val inputStream: InputStream = File("src/integerarray.txt").inputStream()
-        val lineList = mutableListOf<String>()
-        inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it) } }
-        lineList.forEach { veryBigArray.add(it.toInt()) }
-        test(veryBigArray)
+        lineList.forEach { arrayList.add(it.toInt()) }
+        test(arrayList)
     }
 
     fun test(arrayList: ArrayList<Int>) {
-        /*var quickSortFirst = QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1)
-        for (i in quickSortFirst.first) {
-            println(i)
-        }
-        println()
-        print("Comparisons: " + quickSortFirst.second)*/
+        printTest(QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1))
+        //printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
+        //printTest(QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1))
+    }
 
-        /*var quickSortLast = QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1)
-        for (i in quickSortLast.first) {
+    private fun printTest(result: Pair<ArrayList<Int>, Int>) {
+        for (i in result.first) {
             println(i)
         }
         println()
-        print("Comparisons: " + quickSortLast.second)*/
-
-        var quickSortMedian = QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1)
-        for (i in quickSortMedian.first) {
-            println(i)
-        }
-        println()
-        print("Comparisons: " + quickSortMedian.second)
+        print("Comparisons: " + result.second)
     }
 
 }

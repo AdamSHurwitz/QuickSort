@@ -33,24 +33,27 @@ object QuickSort {
             //left side
             if (l >= 0 && i - 2 > 0) {
                 c+= (i - 2 - l)
+                println("nextLeft: " + l + " " + (i - 1))
                 quickSortFirst(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
                 c+= (r - 1 - i)
+                println("nextRight: " + i + " " + r)
                 quickSortFirst(a, i, r)
             }
             return Pair(a, c)
         }
     }
 
+    //todo: start i and j at r - 1
     fun quickSortLast(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
         var p = a[r]
-        var i = l + 1
-        var j = l + 1
+        var i = l
+        var j = l
 
         for (j in j..r) {
-            if (a[j] < p) {
+            if (p < a[j]) {
                 var temp = a[i]
                 a[i] = a[j]
                 a[j] = temp
@@ -58,24 +61,28 @@ object QuickSort {
             }
         }
 
-        if (a[l] != a[i - 1]) {
+        println("p: " + p.toString() + " i: " +  i)
+
+        if (a[l] != a[i]) {
             var temp = a[l]
-            a[l] = a[i - 1]
-            a[i - 1] = temp
+            a[l] = a[i]
+            a[i] = temp
         }
 
-        if (l == r) {
+        if (l >= r) {
             return Pair(a, c)
         } else {
             //left side
-            if (l >= 0 && i - 2 > 0) {
-                c+= (i - 2 - l)
-                quickSortFirst(a, l, i - 1)
+            if (l >= 0 && i - 1 > 0) {
+                c+= (i - 1 - l)
+                println("nextLeft: " + l + " " + (i - 1))
+                quickSortLast(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                c+= (r - 1 - i)
-                quickSortFirst(a, i, r)
+                c+= (r - 2 - i)
+                println("nextRight: " + (i + 1) + " " + (r - 1))
+                quickSortLast(a, i, r)
             }
             return Pair(a, c)
         }
@@ -107,12 +114,12 @@ object QuickSort {
             //left side
             if (l >= 0 && i - 2 > 0) {
                 c+= (i - 2 - l)
-                quickSortFirst(a, l, i - 1)
+                quickSortMedian(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
                 c+= (r - 1 - i)
-                quickSortFirst(a, i, r)
+                quickSortMedian(a, i, r)
             }
             return Pair(a, c)
         }
