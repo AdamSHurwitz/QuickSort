@@ -8,6 +8,9 @@ object QuickSortTest {
     fun main(args: Array<String>) {
         //test(arrayListOf<Int>(1, 2, 3, 4))
         //test(arrayListOf<Int>(4, 3, 2, 1))
+        //test(arrayListOf<Int>(11, 16, 2, 8, 1, 9, 4, 7))
+        //test(arrayListOf<Int>(2, 1, 4))
+        //test(arrayListOf<Int>(16, 9, 11, 8))
         //test(arrayListOf<Int>(1, 3, 2, 4))
         //test(arrayListOf<Int>(5, 6, 1, 3, -1, 8))
         //test(arrayListOf<Int>(1, 4, 3))
@@ -30,8 +33,8 @@ object QuickSortTest {
     }
 
     fun test(arrayList: ArrayList<Int>) {
-        printTest(QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1))
-        //printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
+        //printTest(QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1))
+        printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
         //printTest(QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1))
     }
 

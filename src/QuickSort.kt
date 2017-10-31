@@ -2,6 +2,8 @@ object QuickSort {
 
     var c = 0
 
+    //todo: look at both right calls, should work with i + 1, r
+
     /**
      * p is pivot
      * l is left most boundary used to calculate i (boundary of elements < and > than pivot) and j (newly seen elements)
@@ -32,13 +34,11 @@ object QuickSort {
         } else {
             //left side
             if (l >= 0 && i - 2 > 0) {
-                c+= (i - 2 - l)
                 println("nextLeft: " + l + " " + (i - 1))
                 quickSortFirst(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                c+= (r - 1 - i)
                 println("nextRight: " + i + " " + r)
                 quickSortFirst(a, i, r)
             }
@@ -46,14 +46,15 @@ object QuickSort {
         }
     }
 
-    //todo: start i and j at r - 1
     fun quickSortLast(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
         var p = a[r]
         var i = l
         var j = l
 
+        //println("p: " + p.toString() + " i: " +  i)
+
         for (j in j..r) {
-            if (p < a[j]) {
+            if (a[j] < p) {
                 var temp = a[i]
                 a[i] = a[j]
                 a[j] = temp
@@ -61,11 +62,9 @@ object QuickSort {
             }
         }
 
-        println("p: " + p.toString() + " i: " +  i)
-
-        if (a[l] != a[i]) {
-            var temp = a[l]
-            a[l] = a[i]
+        if (a[r] != a[i]) {
+            var temp = a[r]
+            a[r] = a[i]
             a[i] = temp
         }
 
@@ -74,14 +73,12 @@ object QuickSort {
         } else {
             //left side
             if (l >= 0 && i - 1 > 0) {
-                c+= (i - 1 - l)
                 println("nextLeft: " + l + " " + (i - 1))
                 quickSortLast(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                c+= (r - 2 - i)
-                println("nextRight: " + (i + 1) + " " + (r - 1))
+                println("nextRight: " + i + " " + r)
                 quickSortLast(a, i, r)
             }
             return Pair(a, c)
