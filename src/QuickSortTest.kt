@@ -33,8 +33,14 @@ object QuickSortTest {
     }
 
     fun test(arrayList: ArrayList<Int>) {
+        //todo: fix
+        var quickSortFirst = QuickSort()
+        printTest(quickSortFirst.quickSortFirst(arrayList, 0, arrayList.size - 1))
         //printTest(QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1))
-        printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
+
+        /*var quickSortLast = QuickSort()
+        printTest(quickSortLast.quickSortLast(arrayList, 0, arrayList.size - 1))*/
+        //printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
         //printTest(QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1))
     }
 
@@ -42,8 +48,8 @@ object QuickSortTest {
         for (i in result.first) {
             println(i)
         }
+        println("Comparisons: " + result.second)
         println()
-        print("Comparisons: " + result.second)
     }
 
 }

@@ -1,4 +1,4 @@
-object QuickSort {
+class QuickSort {
 
     var c = 0
 
@@ -30,17 +30,25 @@ object QuickSort {
         }
 
         if (l == r) {
+            c++
+            if (a[r] < a[l - 1]) {
+                var temp = a[l - 1]
+                a[l - 1] = a[r]
+                a[r] = temp
+            }
             return Pair(a, c)
         } else {
             //left side
             if (l >= 0 && i - 2 > 0) {
+                c += i - 1 - l
                 println("nextLeft: " + l + " " + (i - 1))
                 quickSortFirst(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                println("nextRight: " + i + " " + r)
-                quickSortFirst(a, i, r)
+                c += r - i + 1
+                println("nextRight: " + (i + 1) + " " + r)
+                quickSortFirst(a, i + 1, r)
             }
             return Pair(a, c)
         }
@@ -68,18 +76,24 @@ object QuickSort {
             a[i] = temp
         }
 
-        if (l >= r) {
+        if (l > r) {
+            c++
+            var temp = a[l]
+            a[l] = a[r]
+            a[r] = temp
             return Pair(a, c)
         } else {
             //left side
             if (l >= 0 && i - 1 > 0) {
+                c += i - 1 - l
                 println("nextLeft: " + l + " " + (i - 1))
                 quickSortLast(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                println("nextRight: " + i + " " + r)
-                quickSortLast(a, i, r)
+                c += r - i + 1
+                println("nextRight: " + (i + 1) + " " + r)
+                quickSortLast(a, i + 1, r)
             }
             return Pair(a, c)
         }
@@ -110,12 +124,12 @@ object QuickSort {
         } else {
             //left side
             if (l >= 0 && i - 2 > 0) {
-                c+= (i - 2 - l)
+                c += (i - 2 - l)
                 quickSortMedian(a, l, i - 1)
             }
             //right side
             if (r > 0 && i < r) {
-                c+= (r - 1 - i)
+                c += (r - 1 - i)
                 quickSortMedian(a, i, r)
             }
             return Pair(a, c)
@@ -126,11 +140,10 @@ object QuickSort {
         var m = (r - 1) / 2
         if (a[l] > a[m] && a[l] < a[r] || a[l] > a[r] && a[l] < a[m]) {
             return l
-        } else if (a[m] > a[l] && a[m] < a[r]){
+        } else if (a[m] > a[l] && a[m] < a[r]) {
             return m
         } else {
             return r
         }
     }
-
 }
