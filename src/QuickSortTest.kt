@@ -17,7 +17,8 @@ object QuickSortTest {
         //test(arrayListOf<Int>(5, 6, 1, 3, 10, -7, 0))
         //test(arrayListOf<Int>(5, 6, 1, -33, 10, -7, 0, 2, 3, -1))
         //testFile(File("src/integerarray10.txt").inputStream())
-        //testFile(File("src/integerarray25.txt").inputStream())
+        //testFile (File("src/integerarray25.txt").inputStream())
+        //test(arrayListOf<Int>(9, 7, 3, 6))
         //testFile(File("src/integerarray35.txt").inputStream())
         //testFile(File("src/integerarray50.txt").inputStream())
         //testFile(File("src/integerarray100.txt").inputStream())
@@ -34,14 +35,11 @@ object QuickSortTest {
 
     fun test(arrayList: ArrayList<Int>) {
         //todo: fix
-        var quickSortFirst = QuickSort()
-        printTest(quickSortFirst.quickSortFirst(arrayList, 0, arrayList.size - 1))
-        //printTest(QuickSort.quickSortFirst(arrayList, 0, arrayList.size - 1))
+        //var quickSortFirst = QuickSort()
+        //printTest(quickSortFirst.quickSortFirst(arrayList, 0, arrayList.size - 1))
 
-        /*var quickSortLast = QuickSort()
-        printTest(quickSortLast.quickSortLast(arrayList, 0, arrayList.size - 1))*/
-        //printTest(QuickSort.quickSortLast(arrayList, 0, arrayList.size - 1))
-        //printTest(QuickSort.quickSortMedian(arrayList, 0, arrayList.size - 1))
+        var quickSortLast = QuickSort()
+        printTest(quickSortLast.quickSortLast(arrayList, 0, arrayList.size - 1))
     }
 
     private fun printTest(result: Pair<ArrayList<Int>, Int>) {
