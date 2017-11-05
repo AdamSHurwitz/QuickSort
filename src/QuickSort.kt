@@ -2,8 +2,6 @@ class QuickSort {
 
     var c = 0
 
-    //todo: look at both right calls, should work with i + 1, r
-
     /**
      * p is pivot
      * l is left most boundary used to calculate i (boundary of elements < and > than pivot) and j (newly seen elements)
@@ -27,18 +25,19 @@ class QuickSort {
         a[l] = a[i - 1]
         a[i - 1] = temp
 
-        if (l == r) {
+        c += (r - l)
+
+        if (r - l < 1) {
             return Pair(a, c)
         } else {
+
             //left side
-            if (i - 1 > 0) {
-                c += i - 1 - l
-                println("nextLeft: " + l + " " + (i - 1))
-                quickSortFirst(a, l, i - 1)
+            if (i - 1 > 0 && l != i - 2 && i - 2 > l) {
+                println("nextLeft: " + l + " " + (i - 2))
+                quickSortFirst(a, l, i - 2)
             }
             //right side
             if (i < r) {
-                c += r - i + 1
                 println("nextRight: " + (i) + " " + r)
                 quickSortFirst(a, i, r)
             }
@@ -46,6 +45,7 @@ class QuickSort {
         }
     }
 
+    //todo: run same algo as first, pre step swap first element with given pivot
     fun quickSortLast(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
         var p = a[r]
         var i = l
