@@ -35,12 +35,14 @@ object QuickSortTest {
     }
 
     fun test(arrayList: ArrayList<Int>) {
-
         var listSortFirst = ArrayList(arrayList.toTypedArray().copyOf().asList())
         printTest(QuickSort().quickSortFirst(listSortFirst, 0, listSortFirst.size - 1))
 
         var listSortLast = ArrayList(arrayList.toTypedArray().copyOf().asList())
-        //printTest(QuickSort().quickSortLast(listSortLast, 0, listSortLast.size - 1))
+        printTest(QuickSort().quickSortLast(listSortLast, 0, listSortLast.size - 1))
+
+        /*var listSortMedian = ArrayList(arrayList.toTypedArray().copyOf().asList())
+        printTest(QuickSort().quickSortMedian(listSortMedian, 0, listSortMedian.size - 1))*/
     }
 
     private fun printTest(result: Pair<ArrayList<Int>, Int>) {

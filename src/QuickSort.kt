@@ -25,7 +25,7 @@ class QuickSort {
         a[l] = a[i - 1]
         a[i - 1] = temp
 
-        c += (r - l)
+        c += r - l
 
         if (r - l < 1) {
             return Pair(a, c)
@@ -45,13 +45,19 @@ class QuickSort {
         }
     }
 
-    //todo: run same algo as first, pre step swap first element with given pivot
+    /**
+     * p is pivot
+     * l is left most boundary used to calculate i (boundary of elements < and > than pivot) and j (newly seen elements)
+     * r is right most boundary
+     */
     fun quickSortLast(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
-        var p = a[r]
-        var i = l
-        var j = l
+        var firstTemp = a[l]
+        a[l] = a[r]
+        a[r] = firstTemp
 
-        //println("p: " + p.toString() + " i: " +  i)
+        var p = a[l]
+        var i = l + 1
+        var j = l + 1
 
         for (j in j..r) {
             if (a[j] < p) {
@@ -62,39 +68,43 @@ class QuickSort {
             }
         }
 
-        if (a[r] != a[i]) {
-            var temp = a[r]
-            a[r] = a[i]
-            a[i] = temp
-        }
+        var temp = a[l]
+        a[l] = a[i - 1]
+        a[i - 1] = temp
 
-        if (l > r) {
-            c++
-            var temp = a[l]
-            a[l] = a[r]
-            a[r] = temp
+        c += r - l
+
+        if (r - l < 1) {
             return Pair(a, c)
         } else {
+
             //left side
-            if (l >= 0 && i - 1 > 0) {
-                c += i - 1 - l
-                println("nextLeft: " + l + " " + (i - 1))
-                quickSortLast(a, l, i - 1)
+            if (i - 1 > 0 && l != i - 2 && i - 2 > l) {
+                println("nextLeft: " + l + " " + (i - 2))
+                quickSortLast(a, l, i - 2)
             }
             //right side
-            if (r > 0 && i < r) {
-                c += r - i + 1
-                println("nextRight: " + (i + 1) + " " + r)
-                quickSortLast(a, i + 1, r)
+            if (i < r) {
+                println("nextRight: " + (i) + " " + r)
+                quickSortLast(a, i, r)
             }
             return Pair(a, c)
         }
     }
 
-    /*fun quickSortMedian(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
-        var p = getMedian(a, l, r)
-        var i = 0
-        var j = 0
+    /**
+     * p is pivot
+     * l is left most boundary used to calculate i (boundary of elements < and > than pivot) and j (newly seen elements)
+     * r is right most boundary
+     */
+    fun quickSortMedian(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
+        var firstTemp = a[l]
+        a[l] = getMedian(a, l, r)
+        a[r] = firstTemp
+
+        var p = a[l]
+        var i = l + 1
+        var j = l + 1
 
         for (j in j..r) {
             if (a[j] < p) {
@@ -105,34 +115,35 @@ class QuickSort {
             }
         }
 
-        if (a[l] != a[i - 1]) {
-            var temp = a[l]
-            a[l] = a[i - 1]
-            a[i - 1] = temp
-        }
+        var temp = a[l]
+        a[l] = a[i - 1]
+        a[i - 1] = temp
 
-        if (l == r) {
+        c += r - l
+
+        if (r - l < 1) {
             return Pair(a, c)
         } else {
+
             //left side
-            if (l >= 0 && i - 2 > 0) {
-                c += (i - 2 - l)
-                quickSortMedian(a, l, i - 1)
+            if (i - 1 > 0 && l != i - 2 && i - 2 > l) {
+                println("nextLeft: " + l + " " + (i - 2))
+                quickSortMedian(a, l, i - 2)
             }
             //right side
-            if (r > 0 && i < r) {
-                c += (r - 1 - i)
+            if (i < r) {
+                println("nextRight: " + (i) + " " + r)
                 quickSortMedian(a, i, r)
             }
             return Pair(a, c)
         }
-    }*/
+    }
 
     private fun getMedian(a: ArrayList<Int>, l: Int, r: Int): Int {
-        var m = (r - 1) / 2
+        var m = (r) / 2
         if (a[l] > a[m] && a[l] < a[r] || a[l] > a[r] && a[l] < a[m]) {
             return l
-        } else if (a[m] > a[l] && a[m] < a[r]) {
+        } else if (a[m] > a[l] && a[m] < a[r] || a[m] > a[r] && a[m] < a[l]) {
             return m
         } else {
             return r
