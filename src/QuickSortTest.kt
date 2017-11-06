@@ -6,7 +6,8 @@ object QuickSortTest {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        //test(arrayListOf<Int>(1, 2, 3, 4))
+        //test(arrayListOf<Int>(1, 2, 3, 4, 5))
+        //test(arrayListOf(8, 2, 4, 5, 7, 1))
         //test(arrayListOf<Int>(4, 3, 2, 1))
         //test(arrayListOf(3, 8, 2, 5, 1, 4, 7, 6))
         //test(arrayListOf<Int>(11, 16, 2, 8, 1, 9, 4, 7))
@@ -41,8 +42,8 @@ object QuickSortTest {
         var listSortLast = ArrayList(arrayList.toTypedArray().copyOf().asList())
         printTest(QuickSort().quickSortLast(listSortLast, 0, listSortLast.size - 1))
 
-        /*var listSortMedian = ArrayList(arrayList.toTypedArray().copyOf().asList())
-        printTest(QuickSort().quickSortMedian(listSortMedian, 0, listSortMedian.size - 1))*/
+        var listSortMedian = ArrayList(arrayList.toTypedArray().copyOf().asList())
+        printTest(QuickSort().quickSortMedian(listSortMedian, 0, listSortMedian.size - 1))
     }
 
     private fun printTest(result: Pair<ArrayList<Int>, Int>) {

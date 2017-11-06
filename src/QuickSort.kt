@@ -14,16 +14,12 @@ class QuickSort {
 
         for (j in j..r) {
             if (a[j] < p) {
-                var temp = a[i]
-                a[i] = a[j]
-                a[j] = temp
+                swap(a, i, j)
                 i++
             }
         }
 
-        var temp = a[l]
-        a[l] = a[i - 1]
-        a[i - 1] = temp
+        swap(a, l, i - 1)
 
         c += r - l
 
@@ -61,16 +57,12 @@ class QuickSort {
 
         for (j in j..r) {
             if (a[j] < p) {
-                var temp = a[i]
-                a[i] = a[j]
-                a[j] = temp
+                swap(a, i, j)
                 i++
             }
         }
 
-        var temp = a[l]
-        a[l] = a[i - 1]
-        a[i - 1] = temp
+        swap(a, l, i - 1)
 
         c += r - l
 
@@ -98,9 +90,12 @@ class QuickSort {
      * r is right most boundary
      */
     fun quickSortMedian(a: ArrayList<Int>, l: Int, r: Int): Pair<ArrayList<Int>, Int> {
+        var getMedian = getMedian(a, l, r / 2, r)
+        println("med: " + getMedian)
+
         var firstTemp = a[l]
-        a[l] = getMedian(a, l, r)
-        a[r] = firstTemp
+        a[l] = getMedian.second
+        a[getMedian.first] = firstTemp
 
         var p = a[l]
         var i = l + 1
@@ -108,18 +103,14 @@ class QuickSort {
 
         for (j in j..r) {
             if (a[j] < p) {
-                var temp = a[i]
-                a[i] = a[j]
-                a[j] = temp
+                swap(a, i, j)
                 i++
             }
         }
 
-        var temp = a[l]
-        a[l] = a[i - 1]
-        a[i - 1] = temp
+        swap(a, l, i - 1)
 
-        c += r - l
+        c += r - (l + 1)
 
         if (r - l < 1) {
             return Pair(a, c)
@@ -139,14 +130,19 @@ class QuickSort {
         }
     }
 
-    private fun getMedian(a: ArrayList<Int>, l: Int, r: Int): Int {
-        var m = (r) / 2
+    private fun swap(a: ArrayList<Int>, x: Int, y: Int) {
+        var temp = a[x]
+        a[x] = a[y]
+        a[y] = temp
+    }
+
+    private fun getMedian(a: ArrayList<Int>, l: Int, m: Int, r: Int): Pair<Int, Int> {
         if (a[l] > a[m] && a[l] < a[r] || a[l] > a[r] && a[l] < a[m]) {
-            return l
+            return Pair(l, a[l])
         } else if (a[m] > a[l] && a[m] < a[r] || a[m] > a[r] && a[m] < a[l]) {
-            return m
+            return Pair(m, a[m])
         } else {
-            return r
+            return Pair(r, a[r])
         }
     }
 }
